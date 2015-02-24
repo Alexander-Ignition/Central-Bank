@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "CBClient.h"
+
+#import <Ono/ONOXMLDocument.h>
 
 @interface ViewController ()
 
@@ -16,7 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [[CBClient sharedClient] GETSuccess:^(NSURLSessionDataTask *task, ONOXMLDocument *responseObject) {
+        //
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        //
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,4 +11,9 @@
 
 @interface CBClient : NSObject
 
++ (CBClient *)sharedClient;
+
+- (NSURLSessionDataTask *)GETSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
 @end

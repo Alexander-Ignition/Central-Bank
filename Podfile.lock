@@ -20,22 +20,29 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AFOnoResponseSerializer (1.0.0):
+    - AFNetworking (~> 2.2)
+    - Ono (~> 1.0)
   - HexColors (2.2.1)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
+  - Ono (1.2.0)
   - TSMessages (0.9.12):
     - HexColors
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
+  - AFOnoResponseSerializer (~> 1.0)
   - Mantle (~> 1.5)
   - TSMessages (~> 0.9)
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  AFOnoResponseSerializer: 7da7ac6a1cff0eb46894602ca884e903f95087d8
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
+  Ono: 2c9f6c8c50af1b40e988ff85a3f200574ee445cd
   TSMessages: b2b5dc71f65146387e51f2600bb0eb8f3a6c4ab8
 
 COCOAPODS: 0.35.0
