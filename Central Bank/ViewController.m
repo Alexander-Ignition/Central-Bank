@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "CBClient.h"
 
-#import <Ono/ONOXMLDocument.h>
+#import <AFNetworking/UIAlertView+AFNetworking.h>
 
 @interface ViewController ()
 
@@ -20,11 +20,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[CBClient sharedClient] GETSuccess:^(NSURLSessionDataTask *task, ONOXMLDocument *responseObject) {
-        //
+    NSURLSessionDataTask *task = [CB_Client GETSuccess:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
+        
+        [XMLDocument.rootElement.children enumerateObjectsUsingBlock:^(ONOXMLElement *element, NSUInteger idx, BOOL *stop) {
+            [element.children enumerateObjectsUsingBlock:^(ONOXMLElement *element2, NSUInteger idx, BOOL *stop) {
+                //
+            }];
+        }];
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        //
+        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     }];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
 }
 
 - (void)didReceiveMemoryWarning {

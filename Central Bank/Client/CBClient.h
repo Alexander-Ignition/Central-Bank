@@ -9,11 +9,18 @@
 
 @import Foundation;
 
+#import <Ono/ONOXMLDocument.h>
+
+#define CB_Client [CBClient sharedClient]
+
+typedef void (^CBClientXMLBlock)(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument);
+typedef void (^CBClientErrorBlock)(NSURLSessionDataTask *task, NSError *error);
+
 @interface CBClient : NSObject
 
 + (CBClient *)sharedClient;
 
-- (NSURLSessionDataTask *)GETSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+- (NSURLSessionDataTask *)GETSuccess:(CBClientXMLBlock)success
+                             failure:(CBClientErrorBlock)failure;
 
 @end
