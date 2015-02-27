@@ -12,15 +12,6 @@
 #import <AIKit/NSDictionary+AIKit.h>
 
 #import "ONOXMLElement+CBClient.h"
-/*
- @property (nonatomic, copy, readonly) NSString *ID;
- @property (nonatomic, copy, readonly) NSNumber *numCode;
- @property (nonatomic, copy, readonly) NSString *strCode;
- @property (nonatomic, copy, readonly) NSNumber *nominal;
- @property (nonatomic, copy, readonly) NSString *name;
- @property (nonatomic, copy, readonly) NSNumber *value;
- */
-
 
 @implementation CBCurrency
 
@@ -39,7 +30,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ = %@",  _name, _value];
+    return [NSString stringWithFormat:@"<%@: %p> %@ = %@", self.class, self, _name, _value];
 }
 
 @end
