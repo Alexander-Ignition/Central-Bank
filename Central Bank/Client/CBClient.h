@@ -9,18 +9,15 @@
 
 @import Foundation;
 
-#import <Ono/ONOXMLDocument.h>
+#import "CBCurrency.h"
 
 #define CB_Client [CBClient sharedClient]
-
-typedef void (^CBClientXMLBlock)(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument);
-typedef void (^CBClientErrorBlock)(NSURLSessionDataTask *task, NSError *error);
 
 @interface CBClient : NSObject
 
 + (CBClient *)sharedClient;
 
-- (NSURLSessionDataTask *)GETSuccess:(CBClientXMLBlock)success
-                             failure:(CBClientErrorBlock)failure;
+- (NSURLSessionDataTask *)currency:(void (^)(NSURLSessionDataTask *task, NSArray *currencies))success
+                           failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
 
 @end

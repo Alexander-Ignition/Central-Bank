@@ -15,7 +15,12 @@
 		112707341A9B42BB00C0A22F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 112707321A9B42BB00C0A22F /* LaunchScreen.xib */; };
 		112707401A9B42BB00C0A22F /* Central_BankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127073F1A9B42BB00C0A22F /* Central_BankTests.m */; };
 		1127074B1A9B457300C0A22F /* CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127074A1A9B457300C0A22F /* CBClient.m */; };
+		3267A3E51AA07F290089178C /* CBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3267A3E41AA07F290089178C /* CBModel.m */; };
+		32826C481AA047C700DC8A20 /* CBHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C471AA047C700DC8A20 /* CBHTTPSessionManager.m */; };
+		32826C4B1AA04EF700DC8A20 /* CBCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C4A1AA04EF700DC8A20 /* CBCurrency.m */; };
+		32826C511AA0778300DC8A20 /* ONOXMLElement+CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */; };
 		56B181DCAEC3352421E592AF /* libPods-Central Bank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53BDFAEE8374C01833A66F8E /* libPods-Central Bank.a */; };
+		AEE7828D2CD38E549ECADA15 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 127A3D48133C64287A8F63DE /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,9 +49,20 @@
 		1127073F1A9B42BB00C0A22F /* Central_BankTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Central_BankTests.m; sourceTree = "<group>"; };
 		112707491A9B457300C0A22F /* CBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBClient.h; path = Client/CBClient.h; sourceTree = "<group>"; };
 		1127074A1A9B457300C0A22F /* CBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBClient.m; path = Client/CBClient.m; sourceTree = "<group>"; };
+		127A3D48133C64287A8F63DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3267A3E31AA07F290089178C /* CBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBModel.h; path = Client/CBModel.h; sourceTree = "<group>"; };
+		3267A3E41AA07F290089178C /* CBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBModel.m; path = Client/CBModel.m; sourceTree = "<group>"; };
+		32826C461AA047C700DC8A20 /* CBHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBHTTPSessionManager.h; path = Client/CBHTTPSessionManager.h; sourceTree = "<group>"; };
+		32826C471AA047C700DC8A20 /* CBHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBHTTPSessionManager.m; path = Client/CBHTTPSessionManager.m; sourceTree = "<group>"; };
+		32826C491AA04EF700DC8A20 /* CBCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBCurrency.h; path = Client/CBCurrency.h; sourceTree = "<group>"; };
+		32826C4A1AA04EF700DC8A20 /* CBCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBCurrency.m; path = Client/CBCurrency.m; sourceTree = "<group>"; };
+		32826C4F1AA0778300DC8A20 /* ONOXMLElement+CBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ONOXMLElement+CBClient.h"; path = "Client/ONOXMLElement+CBClient.h"; sourceTree = "<group>"; };
+		32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ONOXMLElement+CBClient.m"; path = "Client/ONOXMLElement+CBClient.m"; sourceTree = "<group>"; };
 		53BDFAEE8374C01833A66F8E /* libPods-Central Bank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Central Bank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54F795543E549A60639E77CD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6DF18ED16F4DC6419801A3B6 /* Pods-Central Bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Central Bank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Central Bank/Pods-Central Bank.release.xcconfig"; sourceTree = "<group>"; };
 		7FC5CDACCF4C2976EE7C6E4F /* Pods-Central Bank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Central Bank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Central Bank/Pods-Central Bank.debug.xcconfig"; sourceTree = "<group>"; };
+		D5A7FB77A659B5A67E16F27F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56B181DCAEC3352421E592AF /* libPods-Central Bank.a in Frameworks */,
+				AEE7828D2CD38E549ECADA15 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +152,14 @@
 			children = (
 				112707491A9B457300C0A22F /* CBClient.h */,
 				1127074A1A9B457300C0A22F /* CBClient.m */,
+				32826C461AA047C700DC8A20 /* CBHTTPSessionManager.h */,
+				32826C471AA047C700DC8A20 /* CBHTTPSessionManager.m */,
+				32826C4F1AA0778300DC8A20 /* ONOXMLElement+CBClient.h */,
+				32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */,
+				32826C491AA04EF700DC8A20 /* CBCurrency.h */,
+				32826C4A1AA04EF700DC8A20 /* CBCurrency.m */,
+				3267A3E31AA07F290089178C /* CBModel.h */,
+				3267A3E41AA07F290089178C /* CBModel.m */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -143,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				53BDFAEE8374C01833A66F8E /* libPods-Central Bank.a */,
+				127A3D48133C64287A8F63DE /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,6 +178,8 @@
 			children = (
 				7FC5CDACCF4C2976EE7C6E4F /* Pods-Central Bank.debug.xcconfig */,
 				6DF18ED16F4DC6419801A3B6 /* Pods-Central Bank.release.xcconfig */,
+				D5A7FB77A659B5A67E16F27F /* Pods.debug.xcconfig */,
+				54F795543E549A60639E77CD /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -266,7 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Central Bank/Pods-Central Bank-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BA94D5C064A0E0BA982BAD19 /* Check Pods Manifest.lock */ = {
@@ -292,8 +320,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1127072C1A9B42BB00C0A22F /* ViewController.m in Sources */,
+				32826C511AA0778300DC8A20 /* ONOXMLElement+CBClient.m in Sources */,
+				3267A3E51AA07F290089178C /* CBModel.m in Sources */,
+				32826C4B1AA04EF700DC8A20 /* CBCurrency.m in Sources */,
 				1127074B1A9B457300C0A22F /* CBClient.m in Sources */,
 				112707291A9B42BB00C0A22F /* AppDelegate.m in Sources */,
+				32826C481AA047C700DC8A20 /* CBHTTPSessionManager.m in Sources */,
 				112707261A9B42BB00C0A22F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,7 +446,7 @@
 		};
 		112707441A9B42BB00C0A22F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FC5CDACCF4C2976EE7C6E4F /* Pods-Central Bank.debug.xcconfig */;
+			baseConfigurationReference = D5A7FB77A659B5A67E16F27F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Central Bank/Info.plist";
@@ -425,7 +457,7 @@
 		};
 		112707451A9B42BB00C0A22F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DF18ED16F4DC6419801A3B6 /* Pods-Central Bank.release.xcconfig */;
+			baseConfigurationReference = 54F795543E549A60639E77CD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Central Bank/Info.plist";

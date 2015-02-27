@@ -15,19 +15,14 @@
 
 @end
 
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURLSessionDataTask *task = [CB_Client GETSuccess:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
-        
-        [XMLDocument.rootElement.children enumerateObjectsUsingBlock:^(ONOXMLElement *element, NSUInteger idx, BOOL *stop) {
-            [element.children enumerateObjectsUsingBlock:^(ONOXMLElement *element2, NSUInteger idx, BOOL *stop) {
-                //
-            }];
-        }];
-        
+    NSURLSessionDataTask *task = [CB_Client currency:^(NSURLSessionDataTask *task, NSArray *currencies) {
+        //
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     }];

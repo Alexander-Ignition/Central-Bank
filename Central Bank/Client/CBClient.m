@@ -7,21 +7,16 @@
 //
 
 #import "CBClient.h"
-
-#import <AFNetworking/AFHTTPSessionManager.h>
-#import <AFOnoResponseSerializer/AFOnoResponseSerializer.h>
-
-static NSString * const CBClientURLString = @"http://www.cbr.ru/scripts/";
+#import "CBHTTPSessionManager.h"
 
 @interface CBClient ()
-@property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
+@property (strong, nonatomic) CBHTTPSessionManager *sessionManager;
 @end
 
 
 @implementation CBClient
 
-+ (CBClient *)sharedClient
-{
++ (CBClient *)sharedClient {
     static id client = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -32,24 +27,35 @@ static NSString * const CBClientURLString = @"http://www.cbr.ru/scripts/";
 
 #pragma mark - AFHTTPSessionManager
 
-- (AFHTTPSessionManager *)sessionManager
-{
+- (CBHTTPSessionManager *)sessionManager {
     if (!_sessionManager) {
-        NSURL *baseURL = [NSURL URLWithString:CBClientURLString];
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        config.timeoutIntervalForRequest = 60.f;
-        
-        _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL sessionConfiguration:config];
-        _sessionManager.responseSerializer = [AFOnoResponseSerializer XMLResponseSerializer];
+        _sessionManager = [CBHTTPSessionManager new];
     }
     return _sessionManager;
 }
 
-- (NSURLSessionDataTask *)GETSuccess:(void (^)(NSURLSessionDataTask *task, id responseObject))success
-                             failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
+- (NSURLSessionDataTask *)currency:(void (^)(NSURLSessionDataTask *task, NSArray *currencies))success
+                           failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
 {
-    return [self.sessionManager GET:@"XML_daily.asp" parameters:nil success:success failure:failure];
+    __weak __typeof(self)weakSelf = self;
+    return [self.sessionManager GET:nil parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
+        
+        if (success) {
+            success(task, [weakSelf currenciesFromXML:XMLDocument]);
+        }
+        
+    } failure:failure];
 }
 
+- (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument
+{
+    NSArray *elements = XMLDocument.rootElement.children;
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:elements.count];
+    
+    for (ONOXMLElement *element in elements) {
+        [array addObject:[[CBCurrency alloc] initWithXMLElement:element]];
+    }
+    return array;
+}
 
 @end
