@@ -7,13 +7,21 @@
 //
 
 #import "CBCurrency.h"
-
-#import <Ono/ONOXMLDocument.h>
 #import <AIKit/NSDictionary+AIKit.h>
-
 #import "ONOXMLElement+CBClient.h"
 
 @implementation CBCurrency
+
++ (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument
+{
+    NSArray *elements = XMLDocument.rootElement.children;
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:elements.count];
+    
+    for (ONOXMLElement *element in elements) {
+        [array addObject:[[CBCurrency alloc] initWithXMLElement:element]];
+    }
+    return array;
+}
 
 - (instancetype)initWithXMLElement:(ONOXMLElement *)element {
     if (self = [super init]) {

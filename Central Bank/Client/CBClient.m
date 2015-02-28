@@ -8,6 +8,7 @@
 
 #import "CBClient.h"
 #import "CBHTTPSessionManager.h"
+#import "ONOXMLElement+CBClient.h"
 
 @interface CBClient ()
 @property (strong, nonatomic) CBHTTPSessionManager *sessionManager;
@@ -34,28 +35,16 @@
     return _sessionManager;
 }
 
-- (NSURLSessionDataTask *)currency:(void (^)(NSURLSessionDataTask *task, NSArray *currencies))success
+- (NSURLSessionDataTask *)currency:(void (^)(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date))success
                            failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
 {
-    __weak __typeof(self)weakSelf = self;
     return [self.sessionManager GET:nil parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
         
         if (success) {
-            success(task, [weakSelf currenciesFromXML:XMLDocument]);
+            success(task, [CBCurrency currenciesFromXML:XMLDocument], [XMLDocument.rootElement cb_date]);
         }
         
     } failure:failure];
-}
-
-- (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument
-{
-    NSArray *elements = XMLDocument.rootElement.children;
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:elements.count];
-    
-    for (ONOXMLElement *element in elements) {
-        [array addObject:[[CBCurrency alloc] initWithXMLElement:element]];
-    }
-    return array;
 }
 
 @end

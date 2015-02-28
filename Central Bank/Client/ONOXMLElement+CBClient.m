@@ -7,6 +7,8 @@
 //
 
 #import "ONOXMLElement+CBClient.h"
+#import "NSDateFormatter+CBClient.h"
+#import <AIKit/NSDictionary+AIKit.h>
 
 @implementation ONOXMLElement (CBClient)
 
@@ -16,6 +18,11 @@
 
 - (NSNumber *)cb_numberForKey:(NSString *)key {
     return [[self firstChildWithTag:key] numberValue];
+}
+
+- (NSDate *)cb_date {
+    NSString *dateString = [self.attributes ai_stringForKey:@"Date"];
+    return [[NSDateFormatter cb_dateFormatter] dateFromString:dateString];
 }
 
 @end

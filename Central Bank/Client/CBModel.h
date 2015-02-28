@@ -8,6 +8,14 @@
 
 @import Foundation;
 
+
+@protocol CBXMLSerializing <NSObject>
+
+@end
+
+
 @interface CBModel : NSObject
+
+
 
 @end

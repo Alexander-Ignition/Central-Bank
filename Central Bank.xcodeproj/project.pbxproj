@@ -15,12 +15,13 @@
 		112707341A9B42BB00C0A22F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 112707321A9B42BB00C0A22F /* LaunchScreen.xib */; };
 		112707401A9B42BB00C0A22F /* Central_BankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127073F1A9B42BB00C0A22F /* Central_BankTests.m */; };
 		1127074B1A9B457300C0A22F /* CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127074A1A9B457300C0A22F /* CBClient.m */; };
+		1153E2251AA10377009E3C73 /* MTLXMLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1153E2241AA10377009E3C73 /* MTLXMLAdapter.m */; };
+		11DAE9351AA1C7FD008DE334 /* NSDateFormatter+CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DAE9341AA1C7FD008DE334 /* NSDateFormatter+CBClient.m */; };
 		3267A3E51AA07F290089178C /* CBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3267A3E41AA07F290089178C /* CBModel.m */; };
 		32826C481AA047C700DC8A20 /* CBHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C471AA047C700DC8A20 /* CBHTTPSessionManager.m */; };
 		32826C4B1AA04EF700DC8A20 /* CBCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C4A1AA04EF700DC8A20 /* CBCurrency.m */; };
 		32826C511AA0778300DC8A20 /* ONOXMLElement+CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */; };
-		56B181DCAEC3352421E592AF /* libPods-Central Bank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53BDFAEE8374C01833A66F8E /* libPods-Central Bank.a */; };
-		AEE7828D2CD38E549ECADA15 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 127A3D48133C64287A8F63DE /* libPods.a */; };
+		5352660445F194D93DBC73A1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 127A3D48133C64287A8F63DE /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,10 @@
 		1127073F1A9B42BB00C0A22F /* Central_BankTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Central_BankTests.m; sourceTree = "<group>"; };
 		112707491A9B457300C0A22F /* CBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBClient.h; path = Client/CBClient.h; sourceTree = "<group>"; };
 		1127074A1A9B457300C0A22F /* CBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBClient.m; path = Client/CBClient.m; sourceTree = "<group>"; };
+		1153E2231AA10377009E3C73 /* MTLXMLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTLXMLAdapter.h; path = "Mantle+XML/MTLXMLAdapter.h"; sourceTree = "<group>"; };
+		1153E2241AA10377009E3C73 /* MTLXMLAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTLXMLAdapter.m; path = "Mantle+XML/MTLXMLAdapter.m"; sourceTree = "<group>"; };
+		11DAE9331AA1C7FD008DE334 /* NSDateFormatter+CBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+CBClient.h"; path = "Client/NSDateFormatter+CBClient.h"; sourceTree = "<group>"; };
+		11DAE9341AA1C7FD008DE334 /* NSDateFormatter+CBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+CBClient.m"; path = "Client/NSDateFormatter+CBClient.m"; sourceTree = "<group>"; };
 		127A3D48133C64287A8F63DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3267A3E31AA07F290089178C /* CBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBModel.h; path = Client/CBModel.h; sourceTree = "<group>"; };
 		3267A3E41AA07F290089178C /* CBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBModel.m; path = Client/CBModel.m; sourceTree = "<group>"; };
@@ -70,8 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B181DCAEC3352421E592AF /* libPods-Central Bank.a in Frameworks */,
-				AEE7828D2CD38E549ECADA15 /* libPods.a in Frameworks */,
+				5352660445F194D93DBC73A1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +115,7 @@
 				112707271A9B42BB00C0A22F /* AppDelegate.h */,
 				112707281A9B42BB00C0A22F /* AppDelegate.m */,
 				1127074C1A9B457800C0A22F /* Client */,
+				1153E2261AA1037C009E3C73 /* Mantle+XML */,
 				1127072A1A9B42BB00C0A22F /* ViewController.h */,
 				1127072B1A9B42BB00C0A22F /* ViewController.m */,
 				1127072D1A9B42BB00C0A22F /* Main.storyboard */,
@@ -156,12 +161,23 @@
 				32826C471AA047C700DC8A20 /* CBHTTPSessionManager.m */,
 				32826C4F1AA0778300DC8A20 /* ONOXMLElement+CBClient.h */,
 				32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */,
+				11DAE9331AA1C7FD008DE334 /* NSDateFormatter+CBClient.h */,
+				11DAE9341AA1C7FD008DE334 /* NSDateFormatter+CBClient.m */,
 				32826C491AA04EF700DC8A20 /* CBCurrency.h */,
 				32826C4A1AA04EF700DC8A20 /* CBCurrency.m */,
 				3267A3E31AA07F290089178C /* CBModel.h */,
 				3267A3E41AA07F290089178C /* CBModel.m */,
 			);
 			name = Client;
+			sourceTree = "<group>";
+		};
+		1153E2261AA1037C009E3C73 /* Mantle+XML */ = {
+			isa = PBXGroup;
+			children = (
+				1153E2231AA10377009E3C73 /* MTLXMLAdapter.h */,
+				1153E2241AA10377009E3C73 /* MTLXMLAdapter.m */,
+			);
+			name = "Mantle+XML";
 			sourceTree = "<group>";
 		};
 		C99F3D9349178261111C674F /* Frameworks */ = {
@@ -323,10 +339,12 @@
 				32826C511AA0778300DC8A20 /* ONOXMLElement+CBClient.m in Sources */,
 				3267A3E51AA07F290089178C /* CBModel.m in Sources */,
 				32826C4B1AA04EF700DC8A20 /* CBCurrency.m in Sources */,
+				1153E2251AA10377009E3C73 /* MTLXMLAdapter.m in Sources */,
 				1127074B1A9B457300C0A22F /* CBClient.m in Sources */,
 				112707291A9B42BB00C0A22F /* AppDelegate.m in Sources */,
 				32826C481AA047C700DC8A20 /* CBHTTPSessionManager.m in Sources */,
 				112707261A9B42BB00C0A22F /* main.m in Sources */,
+				11DAE9351AA1C7FD008DE334 /* NSDateFormatter+CBClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

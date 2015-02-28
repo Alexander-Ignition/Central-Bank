@@ -33,8 +33,7 @@ static NSString * const CBClientURLString = @"http://www.cbr.ru/scripts/";
 
 @implementation CBHTTPSessionManager
 
-- (instancetype)init
-{
+- (instancetype)init {
     NSURL *baseURL = [NSURL URLWithString:CBClientURLString];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration cb_defaultSessionConfiguration];
     

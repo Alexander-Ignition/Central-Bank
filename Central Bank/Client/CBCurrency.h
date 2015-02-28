@@ -8,9 +8,11 @@
 
 @import Foundation;
 
-@class ONOXMLElement;
+#import <Ono/ONOXMLDocument.h>
 
 @interface CBCurrency : NSObject
+
++ (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument;
 
 - (instancetype)initWithXMLElement:(ONOXMLElement *)element;
 

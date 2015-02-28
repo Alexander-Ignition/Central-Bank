@@ -13,4 +13,6 @@
 - (NSString *)cb_stringForKey:(NSString *)key;
 - (NSNumber *)cb_numberForKey:(NSString *)key;
 
+- (NSDate *)cb_date;
+
 @end
