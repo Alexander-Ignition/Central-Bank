@@ -22,7 +22,7 @@
 
 - (NSDate *)cb_date {
     NSString *dateString = [self.attributes ai_stringForKey:@"Date"];
-    return [[NSDateFormatter cb_dateFormatter] dateFromString:dateString];
+    return [NSDateFormatter cb_responseDateFromString:dateString];
 }
 
 @end

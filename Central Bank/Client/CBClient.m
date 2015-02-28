@@ -9,6 +9,7 @@
 #import "CBClient.h"
 #import "CBHTTPSessionManager.h"
 #import "ONOXMLElement+CBClient.h"
+#import "NSDateFormatter+CBClient.h"
 
 @interface CBClient ()
 @property (strong, nonatomic) CBHTTPSessionManager *sessionManager;
@@ -35,10 +36,17 @@
     return _sessionManager;
 }
 
-- (NSURLSessionDataTask *)currency:(void (^)(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date))success
-                           failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
+- (NSURLSessionDataTask *)currency:(CBClientCurrencyBlock)success failure:(CBClientErrorBlock)failure {
+    return [self currencyOnDate:nil success:success failure:failure];
+}
+
+- (NSURLSessionDataTask *)currencyOnDate:(NSDate *)date
+                                 success:(CBClientCurrencyBlock)success
+                                 failure:(CBClientErrorBlock)failure
 {
-    return [self.sessionManager GET:nil parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
+    NSDictionary *parameters = date ? @{@"date_req": [NSDateFormatter cb_requestStringFromDate:date]} : nil;
+    
+    return [self.sessionManager GET:@"XML_daily.asp" parameters:parameters success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
         
         if (success) {
             success(task, [CBCurrency currenciesFromXML:XMLDocument], [XMLDocument.rootElement cb_date]);

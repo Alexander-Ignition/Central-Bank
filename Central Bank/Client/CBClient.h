@@ -12,6 +12,7 @@
 #import "CBCurrency.h"
 
 typedef void (^CBClientArrayBlock)(NSURLSessionDataTask *task, NSArray *currencies);
+typedef void (^CBClientCurrencyBlock)(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date);
 typedef void (^CBClientErrorBlock)(NSURLSessionDataTask *task, NSError *error);
 
 #define CB_Client [CBClient sharedClient]
@@ -20,7 +21,11 @@ typedef void (^CBClientErrorBlock)(NSURLSessionDataTask *task, NSError *error);
 
 + (CBClient *)sharedClient;
 
-- (NSURLSessionDataTask *)currency:(void (^)(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date))success
-                           failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+- (NSURLSessionDataTask *)currency:(CBClientCurrencyBlock)success
+                           failure:(CBClientErrorBlock)failure;
+
+- (NSURLSessionDataTask *)currencyOnDate:(NSDate *)date
+                                 success:(CBClientCurrencyBlock)success
+                                 failure:(CBClientErrorBlock)failure;
 
 @end

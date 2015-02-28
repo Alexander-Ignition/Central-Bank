@@ -10,6 +10,10 @@
 
 @interface NSDateFormatter (CBClient)
 
-+ (instancetype)cb_dateFormatter;
++ (instancetype)cb_responseDateFormatter;
++ (instancetype)cb_requestDateFormatter;
+
++ (NSDate *)cb_responseDateFromString:(NSString *)string;
++ (NSString *)cb_requestStringFromDate:(NSDate *)date;
 
 @end

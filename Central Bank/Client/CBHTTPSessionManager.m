@@ -48,11 +48,7 @@ static NSString * const CBClientURLString = @"http://www.cbr.ru/scripts/";
                       success:(void (^)(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument))success
                       failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
 {
-    return [super GET:[self pathFronURLString:URLString] parameters:parameters success:success failure:failure];
-}
-
-- (NSString *)pathFronURLString:(NSString *)URLString {
-    return URLString ? [NSString stringWithFormat:@"%@%@", CBHTTPSessionManagerGET, URLString] : CBHTTPSessionManagerGET;
+    return [super GET:URLString parameters:parameters success:success failure:failure];
 }
 
 @end

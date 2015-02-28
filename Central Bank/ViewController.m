@@ -21,7 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSURLSessionDataTask *task = [CB_Client currency:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
+    NSURLSessionDataTask *task =
+    [CB_Client currencyOnDate:nil success:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
         //
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
