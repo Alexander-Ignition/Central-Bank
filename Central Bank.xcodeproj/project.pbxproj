@@ -22,6 +22,8 @@
 		32826C4B1AA04EF700DC8A20 /* CBCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C4A1AA04EF700DC8A20 /* CBCurrency.m */; };
 		32826C511AA0778300DC8A20 /* ONOXMLElement+CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */; };
 		32E653D81AA44C430003349C /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E653D71AA44C430003349C /* TableViewController.m */; };
+		32E653DB1AA462040003349C /* AITableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E653DA1AA462040003349C /* AITableViewDataSource.m */; };
+		32E653DE1AA468220003349C /* NoDataLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E653DD1AA468220003349C /* NoDataLable.m */; };
 		5352660445F194D93DBC73A1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 127A3D48133C64287A8F63DE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,10 @@
 		32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ONOXMLElement+CBClient.m"; path = "Client/ONOXMLElement+CBClient.m"; sourceTree = "<group>"; };
 		32E653D61AA44C430003349C /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		32E653D71AA44C430003349C /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		32E653D91AA462040003349C /* AITableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITableViewDataSource.h; sourceTree = "<group>"; };
+		32E653DA1AA462040003349C /* AITableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITableViewDataSource.m; sourceTree = "<group>"; };
+		32E653DC1AA468220003349C /* NoDataLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoDataLable.h; sourceTree = "<group>"; };
+		32E653DD1AA468220003349C /* NoDataLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoDataLable.m; sourceTree = "<group>"; };
 		53BDFAEE8374C01833A66F8E /* libPods-Central Bank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Central Bank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F795543E549A60639E77CD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6DF18ED16F4DC6419801A3B6 /* Pods-Central Bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Central Bank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Central Bank/Pods-Central Bank.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +129,10 @@
 				1127072B1A9B42BB00C0A22F /* ViewController.m */,
 				32E653D61AA44C430003349C /* TableViewController.h */,
 				32E653D71AA44C430003349C /* TableViewController.m */,
+				32E653D91AA462040003349C /* AITableViewDataSource.h */,
+				32E653DA1AA462040003349C /* AITableViewDataSource.m */,
+				32E653DC1AA468220003349C /* NoDataLable.h */,
+				32E653DD1AA468220003349C /* NoDataLable.m */,
 				1127072D1A9B42BB00C0A22F /* Main.storyboard */,
 				112707301A9B42BB00C0A22F /* Images.xcassets */,
 				112707321A9B42BB00C0A22F /* LaunchScreen.xib */,
@@ -346,7 +356,9 @@
 				3267A3E51AA07F290089178C /* CBModel.m in Sources */,
 				32826C4B1AA04EF700DC8A20 /* CBCurrency.m in Sources */,
 				1153E2251AA10377009E3C73 /* MTLXMLAdapter.m in Sources */,
+				32E653DB1AA462040003349C /* AITableViewDataSource.m in Sources */,
 				1127074B1A9B457300C0A22F /* CBClient.m in Sources */,
+				32E653DE1AA468220003349C /* NoDataLable.m in Sources */,
 				112707291A9B42BB00C0A22F /* AppDelegate.m in Sources */,
 				32826C481AA047C700DC8A20 /* CBHTTPSessionManager.m in Sources */,
 				112707261A9B42BB00C0A22F /* main.m in Sources */,

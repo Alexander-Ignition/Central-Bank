@@ -8,13 +8,15 @@
 
 #import "TableViewController.h"
 #import "CBClient.h"
+#import "AITableViewDataSource.h"
+#import "NoDataLable.h"
 
 #import <AFNetworking/UIAlertView+AFNetworking.h>
 #import <AFNetworking/UIRefreshControl+AFNetworking.h>
 
 
 @interface TableViewController ()
-@property (nonatomic, copy) NSArray *currencies;
+@property (nonatomic, strong) AITableViewDataSource *dataSource;
 @end
 
 
@@ -23,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addButtons];
+    [self dataSource];
 //    [self request];
 }
 
@@ -31,7 +34,7 @@
     NSURLSessionDataTask *task =
     [CB_Client currencyOnDate:nil success:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
         
-        weakSelf.currencies = currencies;
+        weakSelf.dataSource.items = currencies;
         weakSelf.navigationItem.prompt = date.description;
         [weakSelf.tableView reloadData];
         weakSelf.refreshControl.attributedTitle =
@@ -47,24 +50,33 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.currencies.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"currency_cell";
-    UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+- (AITableViewDataSource *)dataSource {
+    if (_dataSource) {
+        return _dataSource;
     }
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    CBCurrency *currency = self.currencies[indexPath.row];
-    cell.textLabel.text = currency.name;
-    cell.detailTextLabel.text = currency.value;
+    
+    _dataSource = [[AITableViewDataSource alloc] initWitthItems:nil];
+    self.tableView.dataSource = _dataSource;
+    
+    [_dataSource setCellForRowAtIndexPath:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
+        static NSString *cellIdentifier = @"currency_cell";
+        UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        }
+        return cell;
+    }];
+    
+    [_dataSource setConfigureCellAtIndexPath:^(UITableViewCell *cell, NSIndexPath *indexPath, CBCurrency *currency) {
+        cell.textLabel.text = currency.name;
+        cell.detailTextLabel.text = currency.value;
+    }];
+    
+    [_dataSource setNoDataViewForFrame:^UIView *(CGRect frame) {
+        return [[NoDataLable alloc] initWithFrame:frame];
+    }];
+    
+    return _dataSource;
 }
 
 #pragma mark - Buttons
