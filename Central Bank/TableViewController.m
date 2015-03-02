@@ -10,6 +10,7 @@
 #import "CBClient.h"
 #import "AITableViewDataSource.h"
 #import "NoDataLable.h"
+#import "NSDateFormatter+CBClient.h"
 
 #import <AFNetworking/UIAlertView+AFNetworking.h>
 #import <AFNetworking/UIRefreshControl+AFNetworking.h>
@@ -27,7 +28,27 @@
     [self addButtons];
     [self dataSource];
 //    [self request];
+    [self request2];
 }
+
+- (void)request2 {
+    CBCurrency *currency = [CBCurrency new];
+    currency.ID = @"R01235";
+    NSDate *date1 = [NSDateFormatter cb_requestDateFromString:@"23/03/2011"];
+    NSDate *date2 = [NSDateFormatter cb_requestDateFromString:@"30/03/2011"];
+    
+    __weak __typeof(self)weakSelf = self;
+    NSURLSessionDataTask *task =
+    [CB_Client recordsCurrency:currency fromDate:date1 toDate:date2 success:^(NSURLSessionDataTask *task, NSArray *records, NSDate *fromDate, NSDate *toDate) {
+        //
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
+    }];
+    
+    [self.refreshControl setRefreshingWithStateOfTask:task];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+}
+
 
 - (void)request {
     __weak __typeof(self)weakSelf = self;

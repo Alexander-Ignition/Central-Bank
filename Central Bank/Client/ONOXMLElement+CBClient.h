@@ -14,5 +14,7 @@
 - (NSNumber *)cb_numberForKey:(NSString *)key;
 
 - (NSDate *)cb_date;
+- (NSDate *)cb_fromDate;
+- (NSDate *)cb_toDate;
 
 @end

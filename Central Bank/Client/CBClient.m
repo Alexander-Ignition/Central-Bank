@@ -47,12 +47,28 @@
     NSDictionary *parameters = date ? @{@"date_req": [NSDateFormatter cb_requestStringFromDate:date]} : nil;
     
     return [self.sessionManager GET:@"XML_daily.asp" parameters:parameters success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
-        
         if (success) {
             success(task, [CBCurrency currenciesFromXML:XMLDocument], [XMLDocument.rootElement cb_date]);
         }
-        
     } failure:failure];
 }
+
+- (NSURLSessionDataTask *)recordsCurrency:(CBCurrency *)currency
+                                 fromDate:(NSDate *)fromDate
+                                   toDate:(NSDate *)toDate
+                                 success:(CBClientRecordsBlock)success
+                                 failure:(CBClientErrorBlock)failure
+{
+    NSDictionary *parameters = @{ @"date_req1": [NSDateFormatter cb_requestStringFromDate:fromDate],
+                                  @"date_req2": [NSDateFormatter cb_requestStringFromDate:toDate],
+                                  @"VAL_NM_RQ": currency.ID };
+    
+    return [self.sessionManager GET:@"XML_dynamic.asp" parameters:parameters success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
+        if (success) {
+            success(task, [CBRecord arrayFromXML:XMLDocument], [XMLDocument.rootElement cb_fromDate], [XMLDocument.rootElement cb_toDate]);
+        }
+    } failure:failure];
+}
+
 
 @end

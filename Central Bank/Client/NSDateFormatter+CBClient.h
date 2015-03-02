@@ -14,6 +14,8 @@
 + (instancetype)cb_requestDateFormatter;
 
 + (NSDate *)cb_responseDateFromString:(NSString *)string;
++ (NSDate *)cb_requestDateFromString:(NSString *)string;
+
 + (NSString *)cb_requestStringFromDate:(NSDate *)date;
 
 @end

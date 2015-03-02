@@ -28,12 +28,16 @@
     return [[self cb_requestDateFormatter] stringFromDate:date];
 }
 
++ (NSDate *)cb_requestDateFromString:(NSString *)string {
+    return [[self cb_requestDateFormatter] dateFromString:string];
+}
+
 + (instancetype)cb_requestDateFormatter { // "28/02/2015"
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         formatter = [NSDateFormatter new];
-        formatter.dateFormat = @"dd.MM.yy";
+        formatter.dateFormat = @"dd/MM/yy";
     });
     return formatter;
 }

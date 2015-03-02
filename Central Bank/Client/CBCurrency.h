@@ -8,7 +8,8 @@
 
 @import Foundation;
 
-#import <Ono/ONOXMLDocument.h>
+@class ONOXMLElement;
+@class ONOXMLDocument;
 
 @interface CBCurrency : NSObject
 
@@ -16,7 +17,7 @@
 
 - (instancetype)initWithXMLElement:(ONOXMLElement *)element;
 
-@property (nonatomic, copy, readonly) NSString *ID;
+@property (nonatomic, copy) NSString *ID;
 @property (nonatomic, copy, readonly) NSNumber *numCode;
 @property (nonatomic, copy, readonly) NSString *strCode;
 @property (nonatomic, copy, readonly) NSNumber *nominal;

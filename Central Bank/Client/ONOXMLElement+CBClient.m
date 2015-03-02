@@ -25,4 +25,15 @@
     return [NSDateFormatter cb_responseDateFromString:dateString];
 }
 
+- (NSDate *)cb_fromDate {
+    NSString *dateString = [self.attributes ai_stringForKey:@"DateRange1"];
+    return [NSDateFormatter cb_requestDateFromString:dateString];
+}
+
+- (NSDate *)cb_toDate {
+    NSString *dateString = [self.attributes ai_stringForKey:@"DateRange2"];
+    return [NSDateFormatter cb_requestDateFromString:dateString];
+}
+
+
 @end
