@@ -18,7 +18,7 @@
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:elements.count];
     
     for (ONOXMLElement *element in elements) {
-        [array addObject:[[CBCurrency alloc] initWithXMLElement:element]];
+        [array addObject:[[self alloc] initWithXMLElement:element]];
     }
     return array;
 }

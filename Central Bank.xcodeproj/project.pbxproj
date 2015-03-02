@@ -21,6 +21,7 @@
 		32826C481AA047C700DC8A20 /* CBHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C471AA047C700DC8A20 /* CBHTTPSessionManager.m */; };
 		32826C4B1AA04EF700DC8A20 /* CBCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C4A1AA04EF700DC8A20 /* CBCurrency.m */; };
 		32826C511AA0778300DC8A20 /* ONOXMLElement+CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */; };
+		32E653D81AA44C430003349C /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E653D71AA44C430003349C /* TableViewController.m */; };
 		5352660445F194D93DBC73A1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 127A3D48133C64287A8F63DE /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		32826C4A1AA04EF700DC8A20 /* CBCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBCurrency.m; path = Client/CBCurrency.m; sourceTree = "<group>"; };
 		32826C4F1AA0778300DC8A20 /* ONOXMLElement+CBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ONOXMLElement+CBClient.h"; path = "Client/ONOXMLElement+CBClient.h"; sourceTree = "<group>"; };
 		32826C501AA0778300DC8A20 /* ONOXMLElement+CBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ONOXMLElement+CBClient.m"; path = "Client/ONOXMLElement+CBClient.m"; sourceTree = "<group>"; };
+		32E653D61AA44C430003349C /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		32E653D71AA44C430003349C /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		53BDFAEE8374C01833A66F8E /* libPods-Central Bank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Central Bank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F795543E549A60639E77CD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6DF18ED16F4DC6419801A3B6 /* Pods-Central Bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Central Bank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Central Bank/Pods-Central Bank.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				1153E2261AA1037C009E3C73 /* Mantle+XML */,
 				1127072A1A9B42BB00C0A22F /* ViewController.h */,
 				1127072B1A9B42BB00C0A22F /* ViewController.m */,
+				32E653D61AA44C430003349C /* TableViewController.h */,
+				32E653D71AA44C430003349C /* TableViewController.m */,
 				1127072D1A9B42BB00C0A22F /* Main.storyboard */,
 				112707301A9B42BB00C0A22F /* Images.xcassets */,
 				112707321A9B42BB00C0A22F /* LaunchScreen.xib */,
@@ -335,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32E653D81AA44C430003349C /* TableViewController.m in Sources */,
 				1127072C1A9B42BB00C0A22F /* ViewController.m in Sources */,
 				32826C511AA0778300DC8A20 /* ONOXMLElement+CBClient.m in Sources */,
 				3267A3E51AA07F290089178C /* CBModel.m in Sources */,
