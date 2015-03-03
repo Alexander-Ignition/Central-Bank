@@ -44,12 +44,12 @@
                                  success:(CBClientCurrencyBlock)success
                                  failure:(CBClientErrorBlock)failure
 {
-//    NSDictionary *parameters = date ? @{@"date_req": [[NSDateFormatter cb_slashDateFormatter] stringFromDate:date]} : nil;
-    
     NSString *URLString = @"XML_daily.asp";
     
-    URLString = date ? [NSString stringWithFormat:@"%@?date_req=%@", URLString, [[NSDateFormatter cb_slashDateFormatter] stringFromDate:date]] : URLString;
-    
+    if (date) {
+        NSString *dateString = [[NSDateFormatter cb_slashDateFormatter] stringFromDate:date];
+        URLString = [NSString stringWithFormat:@"%@?date_req=%@", URLString, dateString];
+    }
     return [self.sessionManager GET:URLString parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
         if (success) {
             success(task, [CBCurrency currenciesFromXML:XMLDocument], [XMLDocument.rootElement cb_date]);

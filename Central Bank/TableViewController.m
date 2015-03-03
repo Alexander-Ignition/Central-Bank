@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "CBClient.h"
 #import "AITableViewDataSource.h"
+#import "AITableViewDelegate.h"
 #import "NoDataLable.h"
 #import "NSDateFormatter+CBClient.h"
 
@@ -18,6 +19,7 @@
 
 @interface TableViewController ()
 @property (nonatomic, strong) AITableViewDataSource *dataSource;
+@property (nonatomic, strong) AITableViewDelegate *tableViewDelegate;
 @property (nonatomic, copy) NSDate *currentDate;
 @end
 
@@ -27,8 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentDate = [NSDate date];
+    [self tableViewDelegate];
     [self addButtons];
-    [self dataSource];
 }
 
 - (void)setCurrentDate:(NSDate *)date {
@@ -67,25 +69,37 @@
     return _dataSource;
 }
 
+#pragma mark - UITableViewDelegate
+
+- (AITableViewDelegate *)tableViewDelegate {
+    if (_tableViewDelegate) {
+        return _tableViewDelegate;
+    }
+    
+    _tableViewDelegate = [[AITableViewDelegate alloc] initWitthDataSource:self.dataSource];
+    self.tableView.delegate = _tableViewDelegate;
+    
+    [_tableViewDelegate setDidSelectRowAtIndexPath:^(UITableView *tableView, NSIndexPath *indexPath, CBCurrency *currency) {
+        
+        
+        
+        
+        
+    }];
+    return _tableViewDelegate;
+}
+
 #pragma mark - Buttons
 
 - (void)addButtons {
     self.refreshControl = [self createRefreshControl];
     self.navigationItem.rightBarButtonItem = [self refreshButton];
-    self.navigationItem.leftBarButtonItem = [self dateButton];
 }
 
 - (UIBarButtonItem *)refreshButton {
     return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                          target:self
                                                          action:@selector(refreshAction:)];
-}
-
-- (UIBarButtonItem *)dateButton {
-    return [[UIBarButtonItem alloc] initWithTitle:@"date"
-                                            style:UIBarButtonItemStylePlain
-                                           target:self
-                                           action:@selector(dateAction:)];
 }
 
 - (UIRefreshControl *)createRefreshControl {
@@ -97,10 +111,6 @@
 }
 
 #pragma mark - Action
-
-- (void)dateAction:(id)sender {
-    // TODO: add UIDatePicker
-}
         
 - (void)refreshAction:(id)sender {
     [self currencyOnDate:self.currentDate];

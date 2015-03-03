@@ -7,17 +7,12 @@
 //
 
 #import "CBHTTPSessionManager.h"
-
 #import <AFOnoResponseSerializer/AFOnoResponseSerializer.h>
 
-static NSString * const CBHTTPSessionManagerGET = @"XML_daily.asp";
 static NSString * const CBClientURLString = @"http://www.cbr.ru/scripts/";
 
-
 @interface NSURLSessionConfiguration (CBClient)
-
 + (NSURLSessionConfiguration *)cb_defaultSessionConfiguration;
-
 @end
 
 @implementation NSURLSessionConfiguration (CBClient)
