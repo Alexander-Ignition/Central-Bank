@@ -70,26 +70,38 @@
 #pragma mark - Buttons
 
 - (void)addButtons {
-    [self addRefreshButton];
-    [self addRefreshControl];
+    self.refreshControl = [self createRefreshControl];
+    self.navigationItem.rightBarButtonItem = [self refreshButton];
+    self.navigationItem.leftBarButtonItem = [self dateButton];
 }
 
-- (void)addRefreshButton {
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                  target:self
-                                                  action:@selector(refreshAction:)];;
+- (UIBarButtonItem *)refreshButton {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                         target:self
+                                                         action:@selector(refreshAction:)];
 }
 
-- (void)addRefreshControl {
-    self.refreshControl = [UIRefreshControl new];
-    [self.refreshControl addTarget:self
-                            action:@selector(refreshAction:)
-                  forControlEvents:UIControlEventValueChanged];
+- (UIBarButtonItem *)dateButton {
+    return [[UIBarButtonItem alloc] initWithTitle:@"date"
+                                            style:UIBarButtonItemStylePlain
+                                           target:self
+                                           action:@selector(dateAction:)];
+}
+
+- (UIRefreshControl *)createRefreshControl {
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    [refreshControl addTarget:self
+                       action:@selector(refreshAction:)
+             forControlEvents:UIControlEventValueChanged];
+    return refreshControl;
 }
 
 #pragma mark - Action
 
+- (void)dateAction:(id)sender {
+    // TODO: add UIDatePicker
+}
+        
 - (void)refreshAction:(id)sender {
     [self currencyOnDate:self.currentDate];
 }
