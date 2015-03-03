@@ -10,11 +10,7 @@
 
 @implementation NSDateFormatter (CBClient)
 
-+ (NSDate *)cb_responseDateFromString:(NSString *)string {
-    return [[self cb_responseDateFormatter] dateFromString:string];
-}
-
-+ (instancetype)cb_responseDateFormatter { // "28.02.2015"
++ (instancetype)cb_dotDateFormatter { // "28.02.2015"
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -24,20 +20,12 @@
     return formatter;
 }
 
-+ (NSString *)cb_requestStringFromDate:(NSDate *)date {
-    return [[self cb_requestDateFormatter] stringFromDate:date];
-}
-
-+ (NSDate *)cb_requestDateFromString:(NSString *)string {
-    return [[self cb_requestDateFormatter] dateFromString:string];
-}
-
-+ (instancetype)cb_requestDateFormatter { // "28/02/2015"
++ (instancetype)cb_slashDateFormatter { // "28/02/2015"
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         formatter = [NSDateFormatter new];
-        formatter.dateFormat = @"dd/MM/yy";
+        formatter.dateFormat = @"dd/MM/yyyy";
     });
     return formatter;
 }

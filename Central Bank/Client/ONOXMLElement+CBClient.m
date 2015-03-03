@@ -22,17 +22,19 @@
 
 - (NSDate *)cb_date {
     NSString *dateString = [self.attributes ai_stringForKey:@"Date"];
-    return [NSDateFormatter cb_responseDateFromString:dateString];
+    return [[NSDateFormatter cb_slashDateFormatter] dateFromString:dateString];
 }
 
 - (NSDate *)cb_fromDate {
     NSString *dateString = [self.attributes ai_stringForKey:@"DateRange1"];
-    return [NSDateFormatter cb_requestDateFromString:dateString];
+//    return [NSDateFormatter cb_requestDateFromString:dateString];
+    return nil;
 }
 
 - (NSDate *)cb_toDate {
     NSString *dateString = [self.attributes ai_stringForKey:@"DateRange2"];
-    return [NSDateFormatter cb_requestDateFromString:dateString];
+//    return [NSDateFormatter cb_requestDateFromString:dateString];
+    return nil;
 }
 
 
