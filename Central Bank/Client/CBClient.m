@@ -36,10 +36,6 @@
     return _sessionManager;
 }
 
-- (NSURLSessionDataTask *)currency:(CBClientCurrencyBlock)success failure:(CBClientErrorBlock)failure {
-    return [self currencyOnDate:nil success:success failure:failure];
-}
-
 - (NSURLSessionDataTask *)currencyOnDate:(NSDate *)date
                                  success:(CBClientCurrencyBlock)success
                                  failure:(CBClientErrorBlock)failure
@@ -57,15 +53,15 @@
     } failure:failure];
 }
 
-- (NSURLSessionDataTask *)recordsCurrency:(CBCurrency *)currency
-                                 fromDate:(NSDate *)fromDate
-                                   toDate:(NSDate *)toDate
-                                 success:(CBClientRecordsBlock)success
-                                 failure:(CBClientErrorBlock)failure
+- (NSURLSessionDataTask *)recordsCurrencyID:(NSString *)currencyID
+                                   fromDate:(NSDate *)fromDate
+                                     toDate:(NSDate *)toDate
+                                    success:(CBClientRecordsBlock)success
+                                    failure:(CBClientErrorBlock)failure;
 {
     NSDictionary *parameters = @{ @"date_req1": @"",//[NSDateFormatter cb_requestStringFromDate:fromDate],
                                   @"date_req2": @"",//[NSDateFormatter cb_requestStringFromDate:toDate],
-                                  @"VAL_NM_RQ": currency.ID };
+                                  @"VAL_NM_RQ": currencyID };
     
     return [self.sessionManager GET:@"XML_dynamic.asp" parameters:parameters success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
         if (success) {

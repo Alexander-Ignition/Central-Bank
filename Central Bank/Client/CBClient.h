@@ -23,17 +23,14 @@ typedef void (^CBClientErrorBlock)(NSURLSessionDataTask *task, NSError *error);
 
 + (CBClient *)sharedClient;
 
-- (NSURLSessionDataTask *)currency:(CBClientCurrencyBlock)success
-                           failure:(CBClientErrorBlock)failure;
-
 - (NSURLSessionDataTask *)currencyOnDate:(NSDate *)date
                                  success:(CBClientCurrencyBlock)success
                                  failure:(CBClientErrorBlock)failure;
 
-- (NSURLSessionDataTask *)recordsCurrency:(CBCurrency *)currency
-                                 fromDate:(NSDate *)fromDate
-                                   toDate:(NSDate *)toDate
-                                  success:(CBClientRecordsBlock)success
-                                  failure:(CBClientErrorBlock)failure;
+- (NSURLSessionDataTask *)recordsCurrencyID:(NSString *)currencyID
+                                   fromDate:(NSDate *)fromDate
+                                     toDate:(NSDate *)toDate
+                                    success:(CBClientRecordsBlock)success
+                                    failure:(CBClientErrorBlock)failure;
 
 @end
