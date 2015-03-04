@@ -128,6 +128,13 @@
                                                          action:@selector(refreshAction:)];
 }
 
+- (UIBarButtonItem *)activityIndicatorButton {
+    UIActivityIndicatorView *indicatorView =
+    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [indicatorView startAnimating];
+    return [[UIBarButtonItem alloc] initWithCustomView:indicatorView];
+}
+
 - (UIRefreshControl *)createRefreshControl {
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     [refreshControl addTarget:self
@@ -145,6 +152,7 @@
 #pragma mark - Networking
 
 - (void)currencyOnDate:(NSDate *)date {
+    self.navigationItem.rightBarButtonItem = [self activityIndicatorButton];
     
     __weak __typeof(self)weakSelf = self;
     self.task = [CB_CLIENT currencyOnDate:date success:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
@@ -155,6 +163,7 @@
 }
 
 - (void)responseCurrencies:(NSArray *)currencies onDate:(NSDate *)date {
+    self.navigationItem.rightBarButtonItem = [self refreshButton];
     self.dataSource.items = currencies;
     [self.tableView reloadData];
     NSString *dateString = [[NSDateFormatter cb_dotDateFormatter] stringFromDate:date];
