@@ -36,6 +36,8 @@
     return _sessionManager;
 }
 
+#pragma mark - Requests
+
 - (NSURLSessionDataTask *)currencyOnDate:(NSDate *)date
                                  success:(CBClientCurrencyBlock)success
                                  failure:(CBClientErrorBlock)failure
@@ -47,16 +49,6 @@
             success(task, [CBCurrency currenciesFromXML:XMLDocument], [XMLDocument.rootElement cb_slashDate]);
         }
     } failure:failure];
-}
-
-- (NSString *)URLStringForCurrencyOnDate:(NSDate *)date
-{
-    NSString *URLString = @"XML_daily.asp";
-    if (date) {
-        NSString *dateString = [[NSDateFormatter cb_slashDateFormatter] stringFromDate:date];
-        URLString = [NSString stringWithFormat:@"%@?date_req=%@", URLString, dateString];
-    }
-    return URLString;
 }
 
 - (NSURLSessionDataTask *)recordsCurrencyID:(NSString *)currencyID
@@ -76,6 +68,18 @@
             success(task, [CBRecord arrayFromXML:XMLDocument], [XMLDocument.rootElement cb_fromDate], [XMLDocument.rootElement cb_toDate]);
         }
     } failure:failure];
+}
+
+#pragma mark - URL String
+
+- (NSString *)URLStringForCurrencyOnDate:(NSDate *)date
+{
+    NSString *URLString = @"XML_daily.asp";
+    if (date) {
+        NSString *dateString = [[NSDateFormatter cb_slashDateFormatter] stringFromDate:date];
+        URLString = [NSString stringWithFormat:@"%@?date_req=%@", URLString, dateString];
+    }
+    return URLString;
 }
 
 - (NSString *)URLStringCurrencyID:(NSString *)currencyID

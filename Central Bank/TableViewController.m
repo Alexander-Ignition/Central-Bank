@@ -88,6 +88,9 @@
     [_tableViewDelegate setDidSelectRowAtIndexPath:^(UITableView *tableView, NSIndexPath *indexPath, CBCurrency *currency) {
         
         
+        NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-(60 * 60)];
+        NSDate *toDate = [NSDate date];
+        
         [CB_CLIENT recordsCurrencyID:currency.ID fromDate:[NSDate date] toDate:[NSDate date] success:^(NSURLSessionDataTask *task, NSArray *records, NSDate *fromDate, NSDate *toDate) {
             //
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
