@@ -20,6 +20,7 @@
 @interface TableViewController ()
 @property (nonatomic, strong) AITableViewDataSource *dataSource;
 @property (nonatomic, strong) AITableViewDelegate *tableViewDelegate;
+@property (nonatomic, weak) NSURLSessionDataTask *task;
 @property (nonatomic, copy) NSDate *currentDate;
 @end
 
@@ -39,9 +40,21 @@
     self.navigationItem.titleView = lable;
 }
 
+#pragma mark - Setters
+
+- (void)setTask:(NSURLSessionDataTask *)task {
+    if (_task) {
+        [_task cancel];
+    }
+    _task = task;
+    
+    [self.refreshControl setRefreshingWithStateOfTask:task];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+}
+
 - (void)setCurrentDate:(NSDate *)date {
-    self.navigationItem.prompt = date.description;
     _currentDate = date;
+    self.navigationItem.prompt = [[NSDateFormatter cb_dotDateFormatter] stringFromDate:date];
 }
 
 #pragma mark - UITableViewDataSource
@@ -88,10 +101,10 @@
     [_tableViewDelegate setDidSelectRowAtIndexPath:^(UITableView *tableView, NSIndexPath *indexPath, CBCurrency *currency) {
         
         
-        NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-(60 * 60)];
+        NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-(60 * 60 * 24 * 7)];
         NSDate *toDate = [NSDate date];
         
-        [CB_CLIENT recordsCurrencyID:currency.ID fromDate:[NSDate date] toDate:[NSDate date] success:^(NSURLSessionDataTask *task, NSArray *records, NSDate *fromDate, NSDate *toDate) {
+        [CB_CLIENT recordsCurrencyID:currency.ID fromDate:fromDate toDate:toDate success:^(NSURLSessionDataTask *task, NSArray *records, NSDate *fromDate, NSDate *toDate) {
             //
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             //
@@ -134,21 +147,18 @@
 - (void)currencyOnDate:(NSDate *)date {
     
     __weak __typeof(self)weakSelf = self;
-    NSURLSessionDataTask *task = [CB_CLIENT currencyOnDate:date success:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
+    self.task = [CB_CLIENT currencyOnDate:date success:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
         [weakSelf responseCurrencies:currencies onDate:date];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     }];
-    
-    [self.refreshControl setRefreshingWithStateOfTask:task];
-    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
 }
 
 - (void)responseCurrencies:(NSArray *)currencies onDate:(NSDate *)date {
     self.dataSource.items = currencies;
     [self.tableView reloadData];
-    self.refreshControl.attributedTitle =
-    [[NSAttributedString alloc] initWithString:[NSDate date].description attributes:nil];
+    NSString *dateString = [[NSDateFormatter cb_dotDateFormatter] stringFromDate:date];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:dateString attributes:nil];
 }
 
 @end
