@@ -31,6 +31,12 @@
     self.currentDate = [NSDate date];
     [self tableViewDelegate];
     [self addButtons];
+    
+    UILabel *lable = [[UILabel alloc] init];
+    lable.text = @"Currency";
+    lable.font = [UIFont fontWithName:@"Palatino-Italic" size:22];
+    [lable sizeToFit];
+    self.navigationItem.titleView = lable;
 }
 
 - (void)setCurrentDate:(NSDate *)date {
