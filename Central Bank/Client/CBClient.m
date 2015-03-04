@@ -18,7 +18,7 @@
 
 @implementation CBClient
 
-+ (CBClient *)sharedClient {
++ (instancetype)sharedClient {
     static id client = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -40,17 +40,23 @@
                                  success:(CBClientCurrencyBlock)success
                                  failure:(CBClientErrorBlock)failure
 {
-    NSString *URLString = @"XML_daily.asp";
+    NSString *URLString = [self URLStringForCurrencyOnDate:date];
     
+    return [self.sessionManager GET:URLString parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
+        if (success) {
+            success(task, [CBCurrency currenciesFromXML:XMLDocument], [XMLDocument.rootElement cb_slashDate]);
+        }
+    } failure:failure];
+}
+
+- (NSString *)URLStringForCurrencyOnDate:(NSDate *)date
+{
+    NSString *URLString = @"XML_daily.asp";
     if (date) {
         NSString *dateString = [[NSDateFormatter cb_slashDateFormatter] stringFromDate:date];
         URLString = [NSString stringWithFormat:@"%@?date_req=%@", URLString, dateString];
     }
-    return [self.sessionManager GET:URLString parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
-        if (success) {
-            success(task, [CBCurrency currenciesFromXML:XMLDocument], [XMLDocument.rootElement cb_date]);
-        }
-    } failure:failure];
+    return URLString;
 }
 
 - (NSURLSessionDataTask *)recordsCurrencyID:(NSString *)currencyID
@@ -59,15 +65,29 @@
                                     success:(CBClientRecordsBlock)success
                                     failure:(CBClientErrorBlock)failure;
 {
-    NSDictionary *parameters = @{ @"date_req1": @"",//[NSDateFormatter cb_requestStringFromDate:fromDate],
-                                  @"date_req2": @"",//[NSDateFormatter cb_requestStringFromDate:toDate],
-                                  @"VAL_NM_RQ": currencyID };
+    NSParameterAssert(currencyID != nil);
+    NSParameterAssert(fromDate != nil);
+    NSParameterAssert(toDate != nil);
     
-    return [self.sessionManager GET:@"XML_dynamic.asp" parameters:parameters success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
+    NSString *URLString = [self URLStringCurrencyID:currencyID fromDate:fromDate toDate:toDate];
+    
+    return [self.sessionManager GET:URLString parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
         if (success) {
             success(task, [CBRecord arrayFromXML:XMLDocument], [XMLDocument.rootElement cb_fromDate], [XMLDocument.rootElement cb_toDate]);
         }
     } failure:failure];
+}
+
+- (NSString *)URLStringCurrencyID:(NSString *)currencyID
+                         fromDate:(NSDate *)fromDate
+                           toDate:(NSDate *)toDate
+{
+    NSDateFormatter *formatter = [NSDateFormatter cb_slashDateFormatter];
+    NSString *fromDateString = [formatter stringFromDate:fromDate];
+    NSString *toDateString = [formatter stringFromDate:toDate];
+    
+    return [NSString stringWithFormat:@"XML_dynamic.asp?date_req1=%@&date_req2=%@&VAL_NM_RQ=%@",
+            fromDateString, toDateString, currencyID];
 }
 
 

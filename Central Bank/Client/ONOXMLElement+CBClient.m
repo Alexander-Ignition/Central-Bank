@@ -20,21 +20,24 @@
     return [[self firstChildWithTag:key] numberValue];
 }
 
-- (NSDate *)cb_date {
+- (NSDate *)cb_slashDate {
+    NSString *dateString = [self.attributes ai_stringForKey:@"Date"];
+    return [[NSDateFormatter cb_slashDateFormatter] dateFromString:dateString];
+}
+
+- (NSDate *)cb_dotDate {
     NSString *dateString = [self.attributes ai_stringForKey:@"Date"];
     return [[NSDateFormatter cb_slashDateFormatter] dateFromString:dateString];
 }
 
 - (NSDate *)cb_fromDate {
     NSString *dateString = [self.attributes ai_stringForKey:@"DateRange1"];
-//    return [NSDateFormatter cb_requestDateFromString:dateString];
-    return nil;
+    return [[NSDateFormatter cb_slashDateFormatter] dateFromString:dateString];
 }
 
 - (NSDate *)cb_toDate {
     NSString *dateString = [self.attributes ai_stringForKey:@"DateRange2"];
-//    return [NSDateFormatter cb_requestDateFromString:dateString];
-    return nil;
+    return [[NSDateFormatter cb_slashDateFormatter] dateFromString:dateString];
 }
 
 

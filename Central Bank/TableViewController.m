@@ -88,7 +88,11 @@
     [_tableViewDelegate setDidSelectRowAtIndexPath:^(UITableView *tableView, NSIndexPath *indexPath, CBCurrency *currency) {
         
         
-        // TODO: 
+        [CB_CLIENT recordsCurrencyID:currency.ID fromDate:[NSDate date] toDate:[NSDate date] success:^(NSURLSessionDataTask *task, NSArray *records, NSDate *fromDate, NSDate *toDate) {
+            //
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            //
+        }];
         
         
     }];
@@ -127,7 +131,7 @@
 - (void)currencyOnDate:(NSDate *)date {
     
     __weak __typeof(self)weakSelf = self;
-    NSURLSessionDataTask *task = [CB_Client currencyOnDate:date success:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
+    NSURLSessionDataTask *task = [CB_CLIENT currencyOnDate:date success:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
         [weakSelf responseCurrencies:currencies onDate:date];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);

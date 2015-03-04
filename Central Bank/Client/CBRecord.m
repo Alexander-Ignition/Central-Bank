@@ -32,7 +32,7 @@
 - (instancetype)initWithXMLElement:(ONOXMLElement *)element {
     
     NSString *value = [element cb_stringForKey:@"Value"];
-    NSDate *date = [element cb_date];
+    NSDate *date = [element cb_dotDate];
     
     if (!value || !date) {
         return nil;
