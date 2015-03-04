@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Alexander Ignition. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface ViewController : UIViewController
 

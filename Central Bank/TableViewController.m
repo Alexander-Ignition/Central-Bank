@@ -12,6 +12,7 @@
 #import "AITableViewDelegate.h"
 #import "NoDataLable.h"
 #import "NSDateFormatter+CBClient.h"
+#import "DetailViewController.h"
 
 #import <AFNetworking/UIAlertView+AFNetworking.h>
 #import <AFNetworking/UIRefreshControl+AFNetworking.h>
@@ -30,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentDate = [NSDate date];
-    [self tableViewDelegate];
+    [self dataSource];
     [self addButtons];
     
     UILabel *lable = [[UILabel alloc] init];
@@ -88,31 +89,16 @@
     return _dataSource;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark - Segue
 
-- (AITableViewDelegate *)tableViewDelegate {
-    if (_tableViewDelegate) {
-        return _tableViewDelegate;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:[DetailViewController segueIdentifier]]) {
+        DetailViewController *detailViewController = (DetailViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        if (indexPath) {
+            detailViewController.currency = self.dataSource.items[indexPath.row];
+        }
     }
-    
-    _tableViewDelegate = [[AITableViewDelegate alloc] initWitthDataSource:self.dataSource];
-    self.tableView.delegate = _tableViewDelegate;
-    
-    [_tableViewDelegate setDidSelectRowAtIndexPath:^(UITableView *tableView, NSIndexPath *indexPath, CBCurrency *currency) {
-        
-        
-        NSDate *fromDate = [NSDate dateWithTimeIntervalSinceNow:-(60 * 60 * 24 * 7)];
-        NSDate *toDate = [NSDate date];
-        
-        [CB_CLIENT recordsCurrencyID:currency.ID fromDate:fromDate toDate:toDate success:^(NSURLSessionDataTask *task, NSArray *records, NSDate *fromDate, NSDate *toDate) {
-            //
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            //
-        }];
-        
-        
-    }];
-    return _tableViewDelegate;
 }
 
 #pragma mark - Buttons

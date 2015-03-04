@@ -17,6 +17,7 @@
 		1127074B1A9B457300C0A22F /* CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1127074A1A9B457300C0A22F /* CBClient.m */; };
 		1153E2251AA10377009E3C73 /* MTLXMLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1153E2241AA10377009E3C73 /* MTLXMLAdapter.m */; };
 		119774B71AA4CB2000B1FDC5 /* CBRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 119774B61AA4CB2000B1FDC5 /* CBRecord.m */; };
+		11C4CB791AA76E4F00179D75 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C4CB781AA76E4F00179D75 /* DetailViewController.m */; };
 		11CB9C701AA6247D002F7955 /* AITableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CB9C6F1AA6247D002F7955 /* AITableViewDelegate.m */; };
 		11DAE9351AA1C7FD008DE334 /* NSDateFormatter+CBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DAE9341AA1C7FD008DE334 /* NSDateFormatter+CBClient.m */; };
 		3267A3E51AA07F290089178C /* CBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3267A3E41AA07F290089178C /* CBModel.m */; };
@@ -59,6 +60,8 @@
 		1153E2241AA10377009E3C73 /* MTLXMLAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTLXMLAdapter.m; path = "Mantle+XML/MTLXMLAdapter.m"; sourceTree = "<group>"; };
 		119774B51AA4CB2000B1FDC5 /* CBRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBRecord.h; path = Client/CBRecord.h; sourceTree = "<group>"; };
 		119774B61AA4CB2000B1FDC5 /* CBRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBRecord.m; path = Client/CBRecord.m; sourceTree = "<group>"; };
+		11C4CB771AA76E4F00179D75 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		11C4CB781AA76E4F00179D75 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		11CB9C6E1AA6247D002F7955 /* AITableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITableViewDelegate.h; sourceTree = "<group>"; };
 		11CB9C6F1AA6247D002F7955 /* AITableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITableViewDelegate.m; sourceTree = "<group>"; };
 		11DAE9331AA1C7FD008DE334 /* NSDateFormatter+CBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+CBClient.h"; path = "Client/NSDateFormatter+CBClient.h"; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				11CB9C6F1AA6247D002F7955 /* AITableViewDelegate.m */,
 				32E653DC1AA468220003349C /* NoDataLable.h */,
 				32E653DD1AA468220003349C /* NoDataLable.m */,
+				11C4CB771AA76E4F00179D75 /* DetailViewController.h */,
+				11C4CB781AA76E4F00179D75 /* DetailViewController.m */,
 				1127072D1A9B42BB00C0A22F /* Main.storyboard */,
 				112707301A9B42BB00C0A22F /* Images.xcassets */,
 				112707321A9B42BB00C0A22F /* LaunchScreen.xib */,
@@ -363,6 +368,7 @@
 				32E653D81AA44C430003349C /* TableViewController.m in Sources */,
 				1127072C1A9B42BB00C0A22F /* ViewController.m in Sources */,
 				32826C511AA0778300DC8A20 /* ONOXMLElement+CBClient.m in Sources */,
+				11C4CB791AA76E4F00179D75 /* DetailViewController.m in Sources */,
 				11CB9C701AA6247D002F7955 /* AITableViewDelegate.m in Sources */,
 				3267A3E51AA07F290089178C /* CBModel.m in Sources */,
 				32826C4B1AA04EF700DC8A20 /* CBCurrency.m in Sources */,
