@@ -9,8 +9,8 @@
 #import "CBCurrency.h"
 #import "ONOXMLElement+CBClient.h"
 
-#import <Ono/ONOXMLDocument.h>
 #import <AIKit/NSDictionary+AIKit.h>
+#import <Ono/ONOXMLDocument.h>
 
 
 @implementation CBCurrency
@@ -21,20 +21,33 @@
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:elements.count];
     
     for (ONOXMLElement *element in elements) {
-        [array addObject:[[self alloc] initWithXMLElement:element]];
+        CBCurrency *currency = [[self alloc] initWithXMLElement:element];
+        
+        if (currency) {
+            [array addObject:currency];
+        }        
     }
     return array;
 }
 
 - (instancetype)initWithXMLElement:(ONOXMLElement *)element {
+    
+    NSString *ID    = [element.attributes ai_stringForKey:@"ID"];
+    NSString *name  = [element cb_stringForKey:@"Name"];
+    NSString *value = [element cb_stringForKey:@"Value"];
+    
+    if (!ID || !name || !value) {
+        return nil;
+    }
+    
     if (self = [super init]) {
         
-        _ID      = [element.attributes ai_stringForKey:@"ID"];
+        _ID      = ID;
         _numCode = [element cb_numberForKey:@"NumCode"];
         _strCode = [element cb_stringForKey:@"CharCode"];
         _nominal = [element cb_numberForKey:@"Nominal"];
-        _name    = [element cb_stringForKey:@"Name"];
-        _value   = [element cb_stringForKey:@"Value"];
+        _name    = value;
+        _value   = name;
         
     }
     return self;
@@ -42,6 +55,14 @@
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"<%@: %p> %@ = %@", self.class, self, _name, _value];
+}
+
+- (NSLocale *)locale {
+    return [[NSLocale alloc] initWithLocaleIdentifier:self.strCode];
+}
+
+- (NSString *)symbol {
+    return [self.locale displayNameForKey:NSLocaleCurrencySymbol value:self.strCode];
 }
 
 @end

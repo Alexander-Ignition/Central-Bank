@@ -33,7 +33,9 @@
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+        NSString *currencyCode = @"EUR";
+        NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:currencyCode];
+        NSLog(@"Currency Symbol : %@", [locale displayNameForKey:NSLocaleCurrencySymbol value:currencyCode]);
     }];
 }
 

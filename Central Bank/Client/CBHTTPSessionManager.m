@@ -46,4 +46,13 @@ static NSString * const CBClientURLString = @"http://www.cbr.ru/scripts/";
     return [super GET:URLString parameters:parameters success:success failure:failure];
 }
 
+//- (NSString *)URLString:(NSString *)URLString addParameters:(NSDictionary *)parameters {
+//    if (!parameters || [parameters isEqualToDictionary:@{ }]) {
+//        return URLString;
+//    }
+//    NSMutableString *string = [NSMutableString string];
+//    
+//    return URLString;
+//}
+
 @end

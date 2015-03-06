@@ -123,6 +123,8 @@
 
 - (UIRefreshControl *)createRefreshControl {
     UIRefreshControl *refreshControl = [UIRefreshControl new];
+//    refreshControl.backgroundColor = [UIColor greenColor];
+//    refreshControl.tintColor = [UIColor whiteColor];
     [refreshControl addTarget:self
                        action:@selector(refreshAction:)
              forControlEvents:UIControlEventValueChanged];
@@ -153,7 +155,8 @@
     self.dataSource.items = currencies;
     [self.tableView reloadData];
     NSString *dateString = [[NSDateFormatter cb_dotDateFormatter] stringFromDate:date];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:dateString attributes:nil];
+    NSString *title = [NSString stringWithFormat:@"Last update: %@", dateString];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:nil];
 }
 
 @end

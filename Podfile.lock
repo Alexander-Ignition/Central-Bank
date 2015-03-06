@@ -24,6 +24,7 @@ PODS:
     - AFNetworking (~> 2.2)
     - Ono (~> 1.0)
   - AIKit (0.0.2)
+  - BEMSimpleLineGraph (3.3)
   - HexColors (2.2.1)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.5)
   - AFOnoResponseSerializer (~> 1.0)
   - AIKit (= 0.0.2)
+  - BEMSimpleLineGraph (~> 3.3)
   - Mantle (~> 1.5)
   - TSMessages (~> 0.9)
 
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   AFOnoResponseSerializer: 7da7ac6a1cff0eb46894602ca884e903f95087d8
   AIKit: 3eef8d29701e0ac8ea340974922e492614b7be2e
+  BEMSimpleLineGraph: 0ec77f0a2d3e8e448118bbb26963b72f94f1d618
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   Mantle: d5fbaf30fbc58031223af13812c060e15934a1fe
   Ono: 2c9f6c8c50af1b40e988ff85a3f200574ee445cd

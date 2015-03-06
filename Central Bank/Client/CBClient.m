@@ -19,7 +19,7 @@
 @implementation CBClient
 
 + (instancetype)sharedClient {
-    static id client = nil;
+    static CBClient *client = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         client = [self new];
@@ -42,13 +42,16 @@
                                  success:(CBClientCurrencyBlock)success
                                  failure:(CBClientErrorBlock)failure
 {
-    NSString *URLString = [self URLStringForCurrencyOnDate:date];
-    
-    return [self.sessionManager GET:URLString parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
-        if (success) {
-            success(task, [CBCurrency currenciesFromXML:XMLDocument], [XMLDocument.rootElement cb_slashDate]);
-        }
-    } failure:failure];
+    return [self.sessionManager
+            GET:[self URLStringForCurrencyOnDate:date]
+            parameters:nil
+            success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
+                if (success) {
+                    NSArray *currencies = [CBCurrency currenciesFromXML:XMLDocument];
+                    NSDate *responseDate = [XMLDocument.rootElement cb_slashDate];
+                    success(task, currencies, responseDate);
+                }
+            } failure:failure];
 }
 
 - (NSURLSessionDataTask *)recordsCurrencyID:(NSString *)currencyID
@@ -61,13 +64,17 @@
     NSParameterAssert(fromDate != nil);
     NSParameterAssert(toDate != nil);
     
-    NSString *URLString = [self URLStringCurrencyID:currencyID fromDate:fromDate toDate:toDate];
-    
-    return [self.sessionManager GET:URLString parameters:nil success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
-        if (success) {
-            success(task, [CBRecord arrayFromXML:XMLDocument], [XMLDocument.rootElement cb_fromDate], [XMLDocument.rootElement cb_toDate]);
-        }
-    } failure:failure];
+    return [self.sessionManager
+            GET:[self URLStringCurrencyID:currencyID fromDate:fromDate toDate:toDate]
+            parameters:nil
+            success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
+                if (success) {
+                    NSArray *records = [CBRecord arrayFromXML:XMLDocument];
+                    NSDate *responseFromDate = [XMLDocument.rootElement cb_fromDate];
+                    NSDate *responseToDate = [XMLDocument.rootElement cb_toDate];
+                    success(task, records, responseFromDate, responseToDate);
+                }
+            } failure:failure];
 }
 
 #pragma mark - URL String

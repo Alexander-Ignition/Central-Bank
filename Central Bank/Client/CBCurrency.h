@@ -24,4 +24,7 @@
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *value;
 
+@property (nonatomic, strong, readonly) NSLocale *locale;
+@property (nonatomic, strong, readonly) NSString *symbol;
+
 @end

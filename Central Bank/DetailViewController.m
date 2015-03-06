@@ -15,4 +15,10 @@
     return [NSString stringWithFormat:@"%@Segue", NSStringFromClass([self class])];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationItem.title = self.currency.name;
+    self.navigationItem.prompt = self.currency.value;
+}
+
 @end
