@@ -101,7 +101,22 @@
 
 - (void)addButtons {
     self.refreshControl = [self createRefreshControl];
+    self.navigationItem.leftBarButtonItem = [self languageButton];
     self.navigationItem.rightBarButtonItem = [self refreshButton];
+}
+
+- (UIBarButtonItem *)languageButton {
+    return [[UIBarButtonItem alloc] initWithCustomView:[self languageSegmentedControl]];
+}
+
+- (UISegmentedControl *)languageSegmentedControl {
+    UISegmentedControl *segmentedControl =
+    [[UISegmentedControl alloc] initWithItems:@[ @"Rus", @"Eng" ]];
+    segmentedControl.selectedSegmentIndex = 0;
+    [segmentedControl addTarget:self
+                         action:@selector(languageAction:)
+               forControlEvents:UIControlEventValueChanged];
+    return segmentedControl;
 }
 
 - (UIBarButtonItem *)refreshButton {
@@ -128,6 +143,15 @@
 #pragma mark - Action
         
 - (void)refreshAction:(id)sender {
+    [self currencyOnDate:self.currentDate];
+}
+
+- (void)languageAction:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0) {
+        CB_CLIENT.language = CBClientLanguageRus;
+    } else if (sender.selectedSegmentIndex == 1) {
+        CB_CLIENT.language = CBClientLanguageEng;
+    }
     [self currencyOnDate:self.currentDate];
 }
 
