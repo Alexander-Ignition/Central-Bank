@@ -81,10 +81,8 @@
 
 - (NSString *)URLStringForCurrencyOnDate:(NSDate *)date
 {
-    NSString *URLString = @"XML_daily.asp";
-    if (self.language == CBClientLanguageEng) {
-        URLString = @"XML_daily_eng.asp";
-    }
+    NSString *URLString = (self.language == CBClientLanguageEng) ? @"XML_daily_eng.asp" : @"XML_daily.asp";
+    
     if (date) {
         NSString *dateString = [[NSDateFormatter cb_slashDateFormatter] stringFromDate:date];
         URLString = [NSString stringWithFormat:@"%@?date_req=%@", URLString, dateString];

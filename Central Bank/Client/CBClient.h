@@ -10,19 +10,19 @@
 
 @import Foundation;
 
-#import "CBCurrency.h"
 #import "CBRecord.h"
+#import "CBCurrency.h"
 
-typedef NS_ENUM(NSUInteger, CBClientLanguage) {
-    CBClientLanguageRus,
-    CBClientLanguageEng,
-};
+#define CB_CLIENT [CBClient sharedClient]
 
 typedef void (^CBClientCurrencyBlock)(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date);
 typedef void (^CBClientRecordsBlock)(NSURLSessionDataTask *task, NSArray *records, NSDate *fromDate, NSDate *toDate);
 typedef void (^CBClientErrorBlock)(NSURLSessionDataTask *task, NSError *error);
 
-#define CB_CLIENT [CBClient sharedClient]
+typedef NS_ENUM(NSUInteger, CBClientLanguage) {
+    CBClientLanguageRus,
+    CBClientLanguageEng,
+};
 
 @interface CBClient : NSObject
 

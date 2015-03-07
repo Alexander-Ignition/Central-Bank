@@ -34,12 +34,15 @@
     self.currentDate = [NSDate date];
     [self dataSource];
     [self addButtons];
-    
-    UILabel *lable = [[UILabel alloc] init];
-    lable.text = @"Currency";
-    lable.font = [UIFont fontWithName:@"Palatino-Italic" size:22];
-    [lable sizeToFit];
-    self.navigationItem.titleView = lable;
+    self.navigationItem.titleView = [self titleLabel:@"Валюты"];
+}
+
+- (UILabel *)titleLabel:(NSString *)title {
+    UILabel *label = [[UILabel alloc] init];
+    label.text = title; //@"Currency";
+    label.font = [UIFont fontWithName:@"Palatino-Italic" size:22];
+    [label sizeToFit];
+    return label;
 }
 
 #pragma mark - Setters
@@ -72,7 +75,7 @@
     [_dataSource setCellForRowAtIndexPath:^UITableViewCell *(UITableView *tableView, NSIndexPath *__unused indexPath, CBCurrency *currency) {
         static NSString *cellIdentifier = @"currency_cell";
         CurrencyCell *cell = (CurrencyCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        cell.name.text = currency.name;              // dequeueReusableCellWithIdentifier
+        cell.name.text = currency.name;
         cell.nominal.text = [currency localizedNominal];
         cell.value.text = [currency localizedValue];
         return cell;
@@ -149,8 +152,10 @@
 - (void)languageAction:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == 0) {
         CB_CLIENT.language = CBClientLanguageRus;
+        self.navigationItem.titleView = [self titleLabel:@"Валюты"];
     } else if (sender.selectedSegmentIndex == 1) {
         CB_CLIENT.language = CBClientLanguageEng;
+        self.navigationItem.titleView = [self titleLabel:@"Currency"];
     }
     [self currencyOnDate:self.currentDate];
 }
