@@ -31,14 +31,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentDate = [NSDate date];
+    self.language = CBClientLanguageRus;
     [self dataSource];
     [self addButtons];
 }
 
 - (UILabel *)titleLabel:(NSString *)title {
-    UILabel *label = [[UILabel alloc] init];
-    label.text = title; //@"Currency";
+    UILabel *label = [UILabel new];
     label.font = [UIFont fontWithName:@"Palatino-Italic" size:22];
+    label.text = title;
     [label sizeToFit];
     return label;
 }

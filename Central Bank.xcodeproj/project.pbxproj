@@ -63,6 +63,8 @@
 		119774B61AA4CB2000B1FDC5 /* CBRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBRecord.m; path = Client/CBRecord.m; sourceTree = "<group>"; };
 		11C4CB771AA76E4F00179D75 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		11C4CB781AA76E4F00179D75 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		11D4C9731AAB6B6A00B964A8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		11D4C9741AAB6B6A00B964A8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		11DAE9331AA1C7FD008DE334 /* NSDateFormatter+CBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+CBClient.h"; path = "Client/NSDateFormatter+CBClient.h"; sourceTree = "<group>"; };
 		11DAE9341AA1C7FD008DE334 /* NSDateFormatter+CBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+CBClient.m"; path = "Client/NSDateFormatter+CBClient.m"; sourceTree = "<group>"; };
 		11EE28961AAB427C0042F7C0 /* NoDataLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoDataLable.h; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1127072E1A9B42BB00C0A22F /* Base */,
+				11D4C9731AAB6B6A00B964A8 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				112707331A9B42BB00C0A22F /* Base */,
+				11D4C9741AAB6B6A00B964A8 /* ru */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
