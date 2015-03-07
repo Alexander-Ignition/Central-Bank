@@ -9,7 +9,6 @@
 #import "TableViewController.h"
 #import "CBClient.h"
 #import "AITableViewDataSource.h"
-#import "AITableViewDelegate.h"
 #import "NoDataLable.h"
 #import "NSDateFormatter+CBClient.h"
 #import "DetailViewController.h"
@@ -21,7 +20,7 @@
 
 @interface TableViewController ()
 @property (nonatomic, strong) AITableViewDataSource *dataSource;
-@property (nonatomic, strong) AITableViewDelegate *tableViewDelegate;
+@property (nonatomic, assign) CBClientLanguage language;
 @property (nonatomic, weak) NSURLSessionDataTask *task;
 @property (nonatomic, copy) NSDate *currentDate;
 @end
@@ -34,7 +33,6 @@
     self.currentDate = [NSDate date];
     [self dataSource];
     [self addButtons];
-    self.navigationItem.titleView = [self titleLabel:@"Валюты"];
 }
 
 - (UILabel *)titleLabel:(NSString *)title {
@@ -45,7 +43,19 @@
     return label;
 }
 
+#pragma mark - Getters
+
+- (CBClientLanguage)language {
+    return CB_CLIENT.language;
+}
+
 #pragma mark - Setters
+
+- (void)setLanguage:(CBClientLanguage)language {
+    NSString *title = (language == CBClientLanguageEng) ? @"Currency" : @"Валюты";
+    self.navigationItem.titleView = [self titleLabel:title];
+    CB_CLIENT.language = language;
+}
 
 - (void)setTask:(NSURLSessionDataTask *)task {
     if (_task) {
@@ -150,13 +160,7 @@
 }
 
 - (void)languageAction:(UISegmentedControl *)sender {
-    if (sender.selectedSegmentIndex == 0) {
-        CB_CLIENT.language = CBClientLanguageRus;
-        self.navigationItem.titleView = [self titleLabel:@"Валюты"];
-    } else if (sender.selectedSegmentIndex == 1) {
-        CB_CLIENT.language = CBClientLanguageEng;
-        self.navigationItem.titleView = [self titleLabel:@"Currency"];
-    }
+    self.language = (sender.selectedSegmentIndex == 0) ? CBClientLanguageRus : CBClientLanguageEng;
     [self currencyOnDate:self.currentDate];
 }
 
