@@ -16,7 +16,6 @@
 
 - (void)setNoDataViewForFrame:(UIView *(^)(CGRect frame))block;
 - (void)setNumberOfSectionsInTableView:(NSInteger (^)(UITableView *tableView, NSArray *items))block;
-- (void)setCellForRowAtIndexPath:(UITableViewCell *(^)(UITableView *tableView, NSIndexPath *indexPath))block;
-- (void)setConfigureCellAtIndexPath:(void (^)(UITableViewCell *cell, NSIndexPath *indexPath, id item))block;
+- (void)setCellForRowAtIndexPath:(UITableViewCell *(^)(UITableView *tableView, NSIndexPath *indexPath, id item))block;
 
 @end

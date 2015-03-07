@@ -8,23 +8,21 @@
 
 @import Foundation;
 
-@class ONOXMLElement;
-@class ONOXMLDocument;
+#import "CBModel.h"
 
-@interface CBCurrency : NSObject
+@interface CBCurrency : CBModel
 
-+ (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument;
-
-- (instancetype)initWithXMLElement:(ONOXMLElement *)element;
-
-@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy, readonly) NSString *ID;
 @property (nonatomic, copy, readonly) NSNumber *numCode;
-@property (nonatomic, copy, readonly) NSString *strCode;
+@property (nonatomic, copy, readonly) NSString *charCode;
 @property (nonatomic, copy, readonly) NSNumber *nominal;
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *value;
+@property (nonatomic, copy, readonly) NSNumber *value;
 
 @property (nonatomic, strong, readonly) NSLocale *locale;
 @property (nonatomic, strong, readonly) NSString *symbol;
+
+- (NSString *)localizedNominal;
+- (NSString *)localizedValue;
 
 @end

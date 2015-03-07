@@ -15,26 +15,12 @@
 
 @implementation CBCurrency
 
-+ (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument
-{
-    NSArray *elements = XMLDocument.rootElement.children;
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:elements.count];
-    
-    for (ONOXMLElement *element in elements) {
-        CBCurrency *currency = [[self alloc] initWithXMLElement:element];
-        
-        if (currency) {
-            [array addObject:currency];
-        }        
-    }
-    return array;
-}
-
 - (instancetype)initWithXMLElement:(ONOXMLElement *)element {
     
-    NSString *ID    = [element.attributes ai_stringForKey:@"ID"];
-    NSString *name  = [element cb_stringForKey:@"Name"];
-    NSString *value = [element cb_stringForKey:@"Value"];
+    NSString *ID       = [element.attributes ai_stringForKey:@"ID"];
+    NSString *charCode = [element cb_stringForKey:@"CharCode"];
+    NSString *name     = [element cb_stringForKey:@"Name"];
+    NSString *value    = [element cb_stringForKey:@"Value"];
     
     if (!ID || !name || !value) {
         return nil;
@@ -42,12 +28,15 @@
     
     if (self = [super init]) {
         
-        _ID      = ID;
-        _numCode = [element cb_numberForKey:@"NumCode"];
-        _strCode = [element cb_stringForKey:@"CharCode"];
-        _nominal = [element cb_numberForKey:@"Nominal"];
-        _name    = value;
-        _value   = name;
+        _ID       = ID;
+        _numCode  = [element cb_numberForKey:@"NumCode"];
+        _charCode = charCode;
+        _nominal  = [element cb_numberForKey:@"Nominal"];
+        _name     = name;
+        _value    = [self numberFromString:value];
+        
+        _locale   = [NSLocale localeWithLocaleIdentifier:charCode];
+        _symbol   = [_locale displayNameForKey:NSLocaleCurrencySymbol value:charCode];
         
     }
     return self;
@@ -57,12 +46,20 @@
     return [NSString stringWithFormat:@"<%@: %p> %@ = %@", self.class, self, _name, _value];
 }
 
-- (NSLocale *)locale {
-    return [[NSLocale alloc] initWithLocaleIdentifier:self.strCode];
+#pragma mark - NSNumberFormatter
+
+- (NSString *)localizedNominal {
+    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+    numberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    numberFormatter.currencyCode = self.charCode;
+    return [numberFormatter stringFromNumber:self.nominal];
 }
 
-- (NSString *)symbol {
-    return [self.locale displayNameForKey:NSLocaleCurrencySymbol value:self.strCode];
+- (NSString *)localizedValue {
+    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+    numberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    numberFormatter.currencyCode = @"RUB";
+    return [numberFormatter stringFromNumber:self.value];
 }
 
 @end

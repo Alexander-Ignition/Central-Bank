@@ -13,6 +13,7 @@
 #import "NoDataLable.h"
 #import "NSDateFormatter+CBClient.h"
 #import "DetailViewController.h"
+#import "CurrencyCell.h"
 
 #import <AFNetworking/UIAlertView+AFNetworking.h>
 #import <AFNetworking/UIRefreshControl+AFNetworking.h>
@@ -68,18 +69,13 @@
     _dataSource = [[AITableViewDataSource alloc] initWitthItems:nil];
     self.tableView.dataSource = _dataSource;
     
-    [_dataSource setCellForRowAtIndexPath:^UITableViewCell *(UITableView *tableView, NSIndexPath *indexPath) {
+    [_dataSource setCellForRowAtIndexPath:^UITableViewCell *(UITableView *tableView, NSIndexPath *__unused indexPath, CBCurrency *currency) {
         static NSString *cellIdentifier = @"currency_cell";
-        UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-        }
+        CurrencyCell *cell = (CurrencyCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        cell.name.text = currency.name;              // dequeueReusableCellWithIdentifier
+        cell.nominal.text = [currency localizedNominal];
+        cell.value.text = [currency localizedValue];
         return cell;
-    }];
-    
-    [_dataSource setConfigureCellAtIndexPath:^(UITableViewCell *cell, NSIndexPath *indexPath, CBCurrency *currency) {
-        cell.textLabel.text = currency.name;
-        cell.detailTextLabel.text = currency.value;
     }];
     
     [_dataSource setNoDataViewForFrame:^UIView *(CGRect frame) {
@@ -123,8 +119,6 @@
 
 - (UIRefreshControl *)createRefreshControl {
     UIRefreshControl *refreshControl = [UIRefreshControl new];
-//    refreshControl.backgroundColor = [UIColor greenColor];
-//    refreshControl.tintColor = [UIColor whiteColor];
     [refreshControl addTarget:self
                        action:@selector(refreshAction:)
              forControlEvents:UIControlEventValueChanged];
@@ -143,9 +137,9 @@
     self.navigationItem.rightBarButtonItem = [self activityIndicatorButton];
     
     __weak __typeof(self)weakSelf = self;
-    self.task = [CB_CLIENT currencyOnDate:date success:^(NSURLSessionDataTask *task, NSArray *currencies, NSDate *date) {
+    self.task = [CB_CLIENT currencyOnDate:date success:^(NSURLSessionDataTask *__unused task, NSArray *currencies, NSDate *date) {
         [weakSelf responseCurrencies:currencies onDate:date];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     }];
 }

@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.currency.name;
-    self.navigationItem.prompt = self.currency.value;
+    self.navigationItem.prompt = self.currency.value.stringValue;
 }
 
 @end

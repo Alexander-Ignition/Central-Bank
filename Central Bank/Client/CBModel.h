@@ -8,14 +8,14 @@
 
 @import Foundation;
 
-
-@protocol CBXMLSerializing <NSObject>
-
-@end
-
+@class ONOXMLDocument, ONOXMLElement;
 
 @interface CBModel : NSObject
 
++ (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument;
 
+- (instancetype)initWithXMLElement:(ONOXMLElement *)element;
+
+- (NSNumber *)numberFromString:(NSString *)string;
 
 @end

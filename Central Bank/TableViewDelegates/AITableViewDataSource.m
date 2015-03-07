@@ -12,8 +12,7 @@
 
 @property (nonatomic, copy) UIView *(^noDataViewForFrame)(CGRect frame);
 @property (nonatomic, copy) NSInteger (^numberOfSectionsInTableView)(UITableView *tableView, NSArray *items);
-@property (nonatomic, copy) UITableViewCell *(^cellForRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath);
-@property (nonatomic, copy) void (^configureCellAtIndexPath)(UITableViewCell *cell, NSIndexPath *indexPath, id item);
+@property (nonatomic, copy) UITableViewCell *(^cellForRowAtIndexPath)(UITableView *tableView, NSIndexPath *indexPath, id item);
 
 @end
 
@@ -54,13 +53,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.cellForRowAtIndexPath) {
-        UITableViewCell *cell = self.cellForRowAtIndexPath(tableView, indexPath);
-        
-        if (self.configureCellAtIndexPath) {
-            self.configureCellAtIndexPath(cell, indexPath, self.items[indexPath.row]);
-        }
-        return cell;
+    if (self.cellForRowAtIndexPath && self.items.count >= indexPath.row) {
+        return self.cellForRowAtIndexPath(tableView, indexPath, self.items[indexPath.row]);
     }
     return nil;
 }
