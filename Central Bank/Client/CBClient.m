@@ -47,7 +47,7 @@
             parameters:nil
             success:^(NSURLSessionDataTask *task, ONOXMLDocument *XMLDocument) {
                 if (success) {
-                    NSArray *currencies = [CBCurrency currenciesFromXML:XMLDocument];
+                    NSArray *currencies = [CBCurrency arrayFromXML:XMLDocument];
                     NSDate *responseDate = [XMLDocument.rootElement cb_slashDate];
                     success(task, currencies, responseDate);
                 }

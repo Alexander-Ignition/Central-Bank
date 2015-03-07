@@ -30,5 +30,14 @@
     return formatter;
 }
 
++ (instancetype)cb_dateFormatter { // "28"
+    static NSDateFormatter *formatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        formatter = [NSDateFormatter new];
+        formatter.dateFormat = @"dd";
+    });
+    return formatter;
+}
 
 @end

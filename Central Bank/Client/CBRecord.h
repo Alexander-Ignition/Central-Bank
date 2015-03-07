@@ -8,18 +8,13 @@
 
 @import Foundation;
 
-@class ONOXMLElement;
-@class ONOXMLDocument;
+#import "CBModel.h"
 
-@interface CBRecord : NSObject
-
-+ (NSArray *)arrayFromXML:(ONOXMLDocument *)XMLDocument;
-
-- (instancetype)initWithXMLElement:(ONOXMLElement *)element;
+@interface CBRecord : CBModel
 
 @property (nonatomic, copy, readonly) NSDate *date;
 @property (nonatomic, copy, readonly) NSString *ID;
 @property (nonatomic, copy, readonly) NSNumber *nominal;
-@property (nonatomic, copy, readonly) NSString *value;
+@property (nonatomic, copy, readonly) NSNumber *value;
 
 @end

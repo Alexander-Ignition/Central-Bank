@@ -14,21 +14,6 @@
 
 @implementation CBRecord
 
-+ (NSArray *)arrayFromXML:(ONOXMLDocument *)XMLDocument
-{
-    NSArray *elements = XMLDocument.rootElement.children;
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:elements.count];
-    
-    for (ONOXMLElement *element in elements) {
-        CBRecord *record = [[self alloc] initWithXMLElement:element];
-        
-        if (record) {
-            [array addObject:record];
-        }
-    }
-    return array;
-}
-
 - (instancetype)initWithXMLElement:(ONOXMLElement *)element {
     
     NSString *value = [element cb_stringForKey:@"Value"];
@@ -42,7 +27,7 @@
         
         _ID      = [element.attributes ai_stringForKey:@"ID"];
         _nominal = [element cb_numberForKey:@"Nominal"];
-        _value   = value;
+        _value   = [self numberFromString:value];
         _date    = date;
         
     }

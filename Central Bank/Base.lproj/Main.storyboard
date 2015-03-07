@@ -85,8 +85,27 @@
                     <view key="view" contentMode="scaleToFill" id="8dp-pg-FeF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBw-Gx-01b" customClass="BEMSimpleLineGraphView">
+                                <rect key="frame" x="16" y="82" width="568" height="498"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Vec-xe-eAS" id="ACc-sQ-fc0"/>
+                                    <outlet property="delegate" destination="Vec-xe-eAS" id="0gY-5V-TO7"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1DZ-2G-Xs0" firstAttribute="top" secondItem="TBw-Gx-01b" secondAttribute="bottom" constant="20" id="Gch-yb-wyN"/>
+                            <constraint firstItem="TBw-Gx-01b" firstAttribute="top" secondItem="HYQ-sa-4FQ" secondAttribute="bottom" constant="18" id="UDu-ZG-lgU"/>
+                            <constraint firstItem="TBw-Gx-01b" firstAttribute="leading" secondItem="8dp-pg-FeF" secondAttribute="leadingMargin" id="UMw-Jo-CrP"/>
+                            <constraint firstItem="TBw-Gx-01b" firstAttribute="trailing" secondItem="8dp-pg-FeF" secondAttribute="trailingMargin" id="bTR-M4-D3U"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="graphView" destination="TBw-Gx-01b" id="7EI-fF-1yN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dQ-Br-T4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

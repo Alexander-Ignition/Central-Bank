@@ -11,7 +11,7 @@
 
 @implementation CBModel
 
-+ (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument
++ (NSArray *)arrayFromXML:(ONOXMLDocument *)XMLDocument
 {
     NSArray *elements = XMLDocument.rootElement.children;
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:elements.count];

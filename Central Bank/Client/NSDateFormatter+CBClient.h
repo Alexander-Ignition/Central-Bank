@@ -12,5 +12,6 @@
 
 + (instancetype)cb_dotDateFormatter;
 + (instancetype)cb_slashDateFormatter;
++ (instancetype)cb_dateFormatter;
 
 @end

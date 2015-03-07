@@ -12,7 +12,7 @@
 
 @interface CBModel : NSObject
 
-+ (NSArray *)currenciesFromXML:(ONOXMLDocument *)XMLDocument;
++ (NSArray *)arrayFromXML:(ONOXMLDocument *)XMLDocument;
 
 - (instancetype)initWithXMLElement:(ONOXMLElement *)element;
 
