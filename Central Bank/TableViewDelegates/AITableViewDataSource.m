@@ -29,23 +29,27 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    NSInteger count = 0;
+    UIView *view;
     if (self.items) {
         
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         if (self.numberOfSectionsInTableView) {
             return self.numberOfSectionsInTableView(tableView, self.items);
         }
-        return 1;
+        view = nil;
+        count = 1;
         
     } else {
         
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         if (self.noDataViewForFrame) {
-            CGRect frame = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds), CGRectGetHeight(tableView.bounds));
-            tableView.backgroundView = self.noDataViewForFrame(frame);
+            view = self.noDataViewForFrame(tableView.bounds);
         }
     }
-    return 0;
+    tableView.backgroundView = view;
+    return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
