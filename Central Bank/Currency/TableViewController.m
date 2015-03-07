@@ -36,6 +36,14 @@
     [self addButtons];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if (indexPath) {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
 - (UILabel *)titleLabel:(NSString *)title {
     UILabel *label = [UILabel new];
     label.font = [UIFont fontWithName:@"Palatino-Italic" size:22];
