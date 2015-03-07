@@ -88,7 +88,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBw-Gx-01b" customClass="BEMSimpleLineGraphView">
                                 <rect key="frame" x="16" y="82" width="568" height="498"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Vec-xe-eAS" id="ACc-sQ-fc0"/>
                                     <outlet property="delegate" destination="Vec-xe-eAS" id="0gY-5V-TO7"/>
