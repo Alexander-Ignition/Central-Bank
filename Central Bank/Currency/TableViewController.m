@@ -187,6 +187,7 @@
     self.task = [CB_CLIENT currencyOnDate:date success:^(NSURLSessionDataTask *__unused task, NSArray *currencies, NSDate *date) {
         [weakSelf responseCurrencies:currencies onDate:date];
     } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+        weakSelf.navigationItem.rightBarButtonItem = [weakSelf refreshButton];
         NSLog(@"%s %@", __PRETTY_FUNCTION__, error);
     }];
 }
